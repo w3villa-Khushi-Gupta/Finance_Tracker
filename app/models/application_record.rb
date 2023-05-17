@@ -1,3 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
-  primary_abstract_class
+  self.abstract_class = true
+  def self.primary_class
+    true
+  end
 end
