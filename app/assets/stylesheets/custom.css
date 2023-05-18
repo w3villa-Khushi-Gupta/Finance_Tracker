@@ -3,3 +3,11 @@
 .navbar-brand{
     font-size: 30px;
 }
+
+.no-left-padding{
+    padding-left: 0px;
+}
+
+.no-right-padding{
+    padding-right: 0px;
+}
