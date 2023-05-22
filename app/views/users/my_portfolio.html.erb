@@ -1,10 +1,10 @@
 <h1>My Portfolio</h1>
 <div class="search-aria mt-5">
     <h3>Search Stocks</h3>
-    <%= form_tag search_stock_path, method: :get do%>
+    <%= form_tag search_stock_path, remote: true, method: :get  do%>
         <div class="form-group row">
             <div class="col-md-9 no-right-padding">
-                <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker Symbol", autofocus: true%>
+                <%= text_field_tag :stock, params[:stock], placeholder: "Stock Ticker Symbol", autofocus: true, class: 'form-control form-control'%>
             </div>
             <div class="col-md-3 no-left-padding">
                 <%= button_tag type: :submit, class: "btn btn-success" do%>
@@ -13,4 +13,7 @@
             </div>
         </div>
     <%end%>
+</div>
+
+<div id = "results">
 </div>

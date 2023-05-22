@@ -7,8 +7,12 @@ class Stock < ApplicationRecord
         end       
 
         client = FinnhubRuby::DefaultApi.new
-
-        client.quote(ticker_symbol).c
+        
+        begin
+            new(ticker: ticker_symbol,name: client.company_profile2({symbol: ticker_symbol}).name, last_price: client.quote(ticker_symbol).c)
+        rescue => exception
+            return nil
+        end
 
     end
 end
