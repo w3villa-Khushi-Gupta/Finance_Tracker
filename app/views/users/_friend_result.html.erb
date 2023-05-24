@@ -1,0 +1,22 @@
+<%= render 'layouts/message' %>
+
+<% if @friends %>
+    <div class="row mt-3">
+        <div class="col-md-9">
+            <div class="card ">
+                <% @friends.each do |friend| %>
+                    <div class="card-body">
+                        <strong>Name: </strong><%= friend.full_name%>
+                        <strong>Email: </strong><%= friend.email%>
+                        <%= link_to "View Profile", user_path(friend.id) ,class: "btn btn-sm btn-success" , method: :get%>
+                        <%if current_user.not_friends_with?(friend.id)%>
+                            <%= link_to "Follow", friendship_index_path(user_id: current_user.id, friend_id: friend.id ),class: "btn btn-sm btn-success" , method: :post%>
+                        <% else %>
+                            <%= link_to "Unfollow", friendship_path(friend.id), method: :delete, class:"btn btn-sm btn-warning", data: {confirm: "Are you sure?"} %>
+                        <%end%>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+<% end %>
