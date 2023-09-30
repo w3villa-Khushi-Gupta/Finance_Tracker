@@ -12,7 +12,7 @@ class FriendshipController < ApplicationController
     end
     
     def destroy
-        friend =User.find(params[:id])
+        friend = User.find(params[:id])
         friendship= Friendship.where(user_id: current_user.id, friend_id: friend.id).first
         friendship.destroy
         flash[:notice]="Unfollowed #{friend.full_name} "
